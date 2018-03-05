@@ -1,11 +1,12 @@
-feb4f6b182319c3c092ec36f9ac6f5e6  produce/apple.jpg
-45d5bccc1058772dae436b5ea44f2571  produce/cinnamon.jpg
-a4f813dded5a4de16c589353e9cd40a6  produce/eggplant.jpg
-1358390635647a11d6386434112008f9  produce/kale.jpg
-449b41d6c247cc11cadab98f7ac2d63d  produce/lettuce.jpg
-eedb448a0ddbe884892e08f411fce5ec  produce/lotus.jpg
-66ea999e3d50a9c88f779153ab95ac23  produce/orange.jpg
-22115c66fd6e2ab0dffd7a6ffef54357  produce/pineapple.jpg
-7f0548582460d89ccf9abe97f4de1657  produce/plantain.jpg
-c0ab1ac60ac61555db2fc69f536fb969  produce/potato.jpg
-4645524d3339a8b384462a784ab652f1  produce/turnip.jpg
+feb4f6b182319c3c092ec36f9ac6f5e6  groceries/apple.jpg
+45d5bccc1058772dae436b5ea44f2571  groceries/cinnamon.jpg
+a4f813dded5a4de16c589353e9cd40a6  groceries/eggplant.jpg
+1358390635647a11d6386434112008f9  groceries/kale.jpg
+aaf7807da7dfa9cf7121477bd97fc8a1  groceries/lemon.jpg
+449b41d6c247cc11cadab98f7ac2d63d  groceries/lettuce.jpg
+eedb448a0ddbe884892e08f411fce5ec  groceries/lotus.jpg
+66ea999e3d50a9c88f779153ab95ac23  groceries/orange.jpg
+22115c66fd6e2ab0dffd7a6ffef54357  groceries/pineapple.jpg
+7f0548582460d89ccf9abe97f4de1657  groceries/plantain.jpg
+a583c���)V��\M;�"8`8+Z��l,iU��hTy�%�P�eries/potato.jpg
+4645524d3339a8b384462a784ab652f1  groceries/turnip.jpg

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "postinstall": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 28 -nodes -subj \"/C=US/ST=Maryland/L=Rockville/O=Wootton Red Team/OU=Org/CN=potato.local\"",
+    "start": "http-server-with-auth static -p 12227 --ssl --username potato --password a583c6aa977308e59984b3b33fa907ec"
+  },
+  "dependencies": {
+    "http-server-with-auth": "^0.10.2"
+  }
+}
