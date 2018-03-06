@@ -9,12 +9,14 @@ fi
 fname='static/flag_is_in_here.jpg'
 waiter_password=pl554m
 
+echo 'hostname=?'
+read new_hostname
 echo 'flag=?'
 read flag
 
 set -x
 
-apt update && apt install fish npm -y
+apt update && apt install fish npm openssh-server -y
 
 useradd -U -m potato -s $(which fish)
 su potato --shell $(which bash) << EOSU
@@ -44,7 +46,21 @@ potato:starch
 waiter:$waiter_password
 EOF
 
+
+hostnamectl set-hostname $new_hostname
+systemctl restart avahi-daemon
+
+
+cat >> /etc/ssh/sshd_config << EOF
+Match User waiter
+    PasswordAuthentication no
+EOF
+systemctl restart ssh
+
+
 { set +x; } 2> /dev/null
+systemctl status avahi-daemon | grep -F '.local' 
+
 echo "Please login as waiter: $(tput bold)su waiter$(tput sgr0)."
 echo "cd ~/potato-server && npm start"
 echo "password is $waiter_password"
