@@ -1,8 +1,10 @@
-#!/bin/bash -ex
+#!/bin/bash -e
+
 if [[ "$EUID" != 0 ]]; then
   echo must be root
   exit 0
 fi
+
 
 fname='static/flag_is_in_here.jpg'
 waiter_password=jetEnerbEf
@@ -10,21 +12,20 @@ waiter_password=jetEnerbEf
 echo 'flag=?'
 read flag
 
+set -x
 
 apt update && apt install fish npm -y
 
 useradd -U -m potato -s $(which fish)
-su potato << EOF
-cd ..
+su potato << EOSU
 cp -r user/* ~
 cd ~
 chmod -rwx README
 exit
-EOF
+EOSU
 
 useradd -U -m waiter -s /bin/bash
-su waiter << EOF
-cd ..
+su waiter << EOSU
 cp -r potato-server ~
 cd ~/potato-server
 
@@ -34,7 +35,7 @@ openssl rand $(( 2**30)) >> $fname
 
 npm config set strict-ssl false
 npm i
-EOF
+EOSU
 
 chpasswd <<< "potato:starch\nwaiter:$waiter_password"
 
