@@ -7,7 +7,7 @@ fi
 
 
 fname='static/flag_is_in_here.jpg'
-waiter_password=jetEnerbEf
+waiter_password=pl554m
 
 echo 'flag=?'
 read flag
@@ -17,7 +17,8 @@ set -x
 apt update && apt install fish npm -y
 
 useradd -U -m potato -s $(which fish)
-su potato << EOSU
+su potato --shell $(which bash) << EOSU
+set -x
 cp -r user/* ~
 cd ~
 chmod -rwx README
@@ -26,6 +27,7 @@ EOSU
 
 useradd -U -m waiter -s /bin/bash
 su waiter << EOSU
+set -x
 cp -r potato-server ~
 cd ~/potato-server
 
@@ -37,7 +39,10 @@ npm config set strict-ssl false
 npm i
 EOSU
 
-chpasswd <<< "potato:starch\nwaiter:$waiter_password"
+chpasswd << EOF
+potato:starch
+waiter:$waiter_password
+EOF
 
 { set +x; } 2> /dev/null
 echo "Please login as $(tput bold)waiter$(tput sgr0)."
