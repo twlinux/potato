@@ -45,7 +45,7 @@ waiter:$waiter_password
 EOF
 
 { set +x; } 2> /dev/null
-echo "Please login as $(tput bold)waiter$(tput sgr0)."
+echo "Please login as waiter: $(tput bold)su waiter$(tput sgr0)."
 echo "cd ~/potato-server && npm start"
 echo "password is $waiter_password"
 
