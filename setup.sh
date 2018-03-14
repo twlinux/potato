@@ -33,13 +33,15 @@ set -x
 cp -r potato-server ~
 cd ~/potato-server
 
-openssl rand $(( 2**30)) >> $fname
+openssl rand $(( 2**30 / 4 )) >> $fname
 echo "The FLAG is on the next line...\n$flag\n" >> $fname 
-openssl rand $(( 2**30)) >> $fname
+openssl rand $(( 2**30 / 4 )) >> $fname
 
-npm config set strict-ssl false
+echo strict-ssl=false >> .npmrc
 npm i
 EOSU
+
+chown -R waiter /home/waiter/potato-server
 
 chpasswd << EOF
 potato:starch
@@ -50,12 +52,15 @@ EOF
 hostnamectl set-hostname $new_hostname
 systemctl restart avahi-daemon
 
-
+grep 'Match User waiter' /etc/ssh/sshd_config
+if [ "$?" -ne "0" ]; then
 cat >> /etc/ssh/sshd_config << EOF
 Match User waiter
     PasswordAuthentication no
 EOF
+fi
 systemctl restart ssh
+
 
 
 { set +x; } 2> /dev/null
